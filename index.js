@@ -1,1 +1,1 @@
-module.exports = require('./lib/npm-user-service');
+module.exports = require('./lib/user');
