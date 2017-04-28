@@ -1,1 +1,3 @@
-module.exports = require('./lib/user');
+// require('regenerator/runtime');
+
+module.exports = require('./lib/index').default;
