@@ -1,16 +1,15 @@
 npm-user-service
 =======
 
-[![NPM version][npm-image]][npm-url]
+<!--[![NPM version][npm-image]][npm-url]-->
 [![build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
-[![Gittip][gittip-image]][gittip-url]
-[![David deps][david-image]][david-url]
+<!--[![Test coverage][coveralls-image]][coveralls-url]-->
+
 
 [npm-image]: https://img.shields.io/npm/v/npm-user-service.svg?style=flat
 [npm-url]: https://npmjs.org/package/npm-user-service
-[travis-image]: https://img.shields.io/travis/cnpm/npm-user-service.svg?style=flat
-[travis-url]: https://travis-ci.org/cnpm/npm-user-service
+[travis-image]: https://travis-ci.org/ltchronus/npm-user-service.svg?style=flat
+[travis-url]: https://travis-ci.org/ltchronus/npm-user-service
 [coveralls-image]: https://img.shields.io/coveralls/cnpm/npm-user-service.svg?style=flat
 [coveralls-url]: https://coveralls.io/r/cnpm/npm-user-service?branch=master
 
