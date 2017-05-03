@@ -55,12 +55,13 @@ class UserService {
    * @param  {String} password login password
    * @return {User}
    */
-  auth(login, password) {
+  * auth(login, password) {
     const form = new FormData();
     form.append('login', login);
     form.append('password', password);
-    return this._request('POST', 'session', form)
+    const user = yield this._request('POST', 'session', form)
       .then(formatUser);
+    return user;
   }
 
   /**
@@ -68,11 +69,12 @@ class UserService {
    * @param  {String} login  login name
    * @return {User}
    */
-  get(login) {
+  * get(login) {
     const url = `users?username=${login}`;
-    return this._request('get', url)
+    const user = yield this._request('get', url)
       .then(users => users[0])
       .then(formatUser);
+    return user;
   }
 
   /**
@@ -80,15 +82,11 @@ class UserService {
    * @param  {Array<String>} logins  login names
    * @return {Array<User>}
    */
-  list(logins) {
+  * list(logins) {
     const that = this;
-    const usersPromises = logins
+    const users = yield logins
       .map(name => that.get(name));
-    return Promise.all(usersPromises)
-      .then(users => users.filter(user => !!user))
-      .catch(() => {
-        console.log(22222);
-      });
+    return users.filter(user => !!user);
   }
 
   /**
