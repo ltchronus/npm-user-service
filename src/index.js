@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import FormData from 'form-data';
 
 function formatUser(data) {
   if (!data) {
@@ -55,7 +56,10 @@ class UserService {
    * @return {User}
    */
   auth(login, password) {
-    return this._request('POST', 'session', { login, password })
+    const form = new FormData();
+    form.append('login', login);
+    form.append('password', password);
+    return this._request('POST', 'session', form)
       .then(formatUser);
   }
 
@@ -81,7 +85,10 @@ class UserService {
     const usersPromises = logins
       .map(name => that.get(name));
     return Promise.all(usersPromises)
-      .then(users => users.filter(user => !!user));
+      .then(users => users.filter(user => !!user))
+      .catch(() => {
+        console.log(22222);
+      });
   }
 
   /**
@@ -96,20 +103,24 @@ class UserService {
 
   }
 
-  _request(method, url, data) {
+  _request(method, url, formData) {
     const newUrl = `${this.api}/${url}`;
     const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
+      // Accept: 'application/json',
+      // 'Content-Type': 'application/json',
+      // 'X-Requested-With': 'XMLHttpRequest',
       'PRIVATE-TOKEN': this.privateToken,
     };
-
-    return fetch(newUrl, {
+    let opts = {
       method,
-      body: JSON.stringify(data),
       headers,
-    }).then(handles.checkStatus)
+    };
+
+    if (method === 'POST') {
+      opts = Object.assign({}, opts, { body: formData });
+    }
+    // console.log(newUrl, opts, 'newUrl');
+    return fetch(newUrl, opts).then(handles.checkStatus)
     .then(handles.parseJSON);
   }
 }

@@ -7,7 +7,7 @@
 var should = require('should');
 var UserService = require('../');
 
-var username = process.env.NANE;
+var username = process.env.NAME;
 var password = process.env.PW;
 var email = process.env.EMAIL;
 var privateToken = process.env.TOKEN;
@@ -19,16 +19,15 @@ var userservice = new UserService({
 
 describe('user.test.js', function () {
 
-
   describe('auth()', function () {
     it('should auth pass and return user', function (done) {
+      console.log(username, password);
       userservice.auth(username, password, email).then((user) => {
         user.should.have.keys('login', 'email', 'name', 'html_url', 'avatar_url', 'im_url', '_raw');
         user.login.should.equal('ltchronus');
         done()
       }).catch((err) => {
-        console.log(err);
-        done()
+        done(err)
       });
     });
 
@@ -54,16 +53,18 @@ describe('user.test.js', function () {
         user.should.have.keys('login', 'email', 'name', 'html_url', 'avatar_url', 'im_url', '_raw');
         user.login.should.equal('ltchronus');
         done()
-      })
+      }).catch((err) => {
+        done(err)
+      });
     });
 
-    it('should return null when user not exists', function () {
+    it('should return null when user not exists', function (done) {
       userservice.get('name-not-exists').then((user) => {
         should.not.exist(user);
         done()
+      }).catch((err) => {
+        done(err)
       });
-
-
     });
   });
 
@@ -76,6 +77,8 @@ describe('user.test.js', function () {
           user.should.have.keys('login', 'email', 'name', 'html_url', 'avatar_url', 'im_url', '_raw');
         });
         done()
+      }).catch((err) => {
+        done(err)
       });
 
     });
@@ -88,15 +91,19 @@ describe('user.test.js', function () {
           user.should.have.keys('login', 'email', 'name', 'html_url', 'avatar_url', 'im_url', '_raw');
         });
         done()
+      }).catch((err) => {
+        done(err)
       });
 
     });
 
-    it('should return [] when all users not exists', function* () {
+    it('should return [] when all users not exists', function () {
       userservice.list(['name-not-exists', 'dead-horse-not-exists']).then((users) => {
         users.should.be.an.Array;
         users.should.length(0);
         done()
+      }).catch((err) => {
+        done(err)
       });
 
     });
