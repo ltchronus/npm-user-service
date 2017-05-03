@@ -1,13 +1,13 @@
 npm-user-service
 =======
 
-<!--[![NPM version][npm-image]][npm-url]-->
+[![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 <!--[![Test coverage][coveralls-image]][coveralls-url]-->
 
 
 [npm-image]: https://img.shields.io/npm/v/npm-user-service.svg?style=flat
-[npm-url]: https://npmjs.org/package/npm-user-service
+[npm-url]: https://www.npmjs.com/package/cnpm-user-service-gitlab
 [travis-image]: https://travis-ci.org/ltchronus/npm-user-service.svg?style=flat
 [travis-url]: https://travis-ci.org/ltchronus/npm-user-service
 [coveralls-image]: https://img.shields.io/coveralls/cnpm/npm-user-service.svg?style=flat
@@ -19,7 +19,7 @@ npm-user-service
 ## Install
 
 ```bash
-$ npm install npm-user-service --save
+$ npm install cnpm-user-service-gitlab --save
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ $ npm install npm-user-service --save
 Set `userService` on [cnpmjs.org/config/config.js](https://github.com/cnpm/cnpmjs.org/blob/master/config/index.js)
 
 ```js
-var NpmUserService = require('npm-user-service');
+var NpmUserService = require('cnpm-user-service-gitlab');
 
 config.userService = new NpmUserService();
 ```

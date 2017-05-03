@@ -21,7 +21,6 @@ describe('user.test.js', function () {
 
   describe('auth()', function () {
     it('should auth pass and return user', function (done) {
-      console.log(username, password);
       userservice.auth(username, password, email).then((user) => {
         user.should.have.keys('login', 'email', 'name', 'html_url', 'avatar_url', 'im_url', '_raw');
         user.login.should.equal('ltchronus');
@@ -34,7 +33,6 @@ describe('user.test.js', function () {
     it('should throw error when auth fail', function (done) {
 
       userservice.auth(username, 'password', email).then((user) => {
-        console.log(user, '2222');
         throw new Error('should not run this');
         done()
       }).catch((err) => {
