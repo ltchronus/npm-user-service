@@ -51,7 +51,7 @@
     "gitlab"
   ],
   "engines": {
-    "node": ">= 0.11.14"
+    "node": ">= 6.9"
   },
   "author": "ltchronus <ltchronus@gmail.com> (http://ltchronus.github.com)",
   "license": "MIT"
