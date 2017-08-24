@@ -1,6 +1,6 @@
 {
   "name": "cnpm-user-service-gitlab",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "gitlab user service for cnpmjs.org",
   "main": "index.js",
   "scripts": {
