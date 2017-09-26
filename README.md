@@ -32,6 +32,10 @@ var NpmUserService = require('cnpm-user-service-gitlab');
 config.userService = new NpmUserService();
 ```
 
+### requirements
+- gitlab v3 api
+- gitlab admin accesskey
+
 ## License
 
 MIT
